@@ -12,6 +12,8 @@
     </ul>
 </nav>
 <div class="articles form large-9 medium-8 columns content">
+    <h1>Add Article</h1>
+
     <?= $this->Form->create($article) ?>
     <fieldset>
         <legend><?= __('Add Article') ?></legend>

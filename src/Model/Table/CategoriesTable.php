@@ -66,7 +66,7 @@ class CategoriesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
+            ->integer('id')
             ->allowEmpty('id', 'create');
 
         $validator
@@ -74,18 +74,18 @@ class CategoriesTable extends Table
             ->notEmpty('name');
 
         $validator
-            ->add('lft', 'valid', ['rule' => 'numeric'])
-        //  ->requirePresence('lft', 'create')
-            ->notEmpty('lft');
-
-        $validator
-            ->add('rght', 'valid', ['rule' => 'numeric'])
-        //  ->requirePresence('rght', 'create')
-            ->notEmpty('rght');
-
-        $validator
             ->requirePresence('description', 'create')
             ->notEmpty('description');
+    
+        $validator
+            ->add('lft', 'valid');
+        //  ->requirePresence('lft', 'create')
+            // ->notEmpty('lft');
+
+        $validator
+            ->add('rght', 'valid');
+        //  ->requirePresence('rght', 'create')
+            // ->notEmpty('rght');
 
         return $validator;
     }

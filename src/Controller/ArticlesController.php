@@ -58,7 +58,6 @@ class ArticlesController extends AppController
     }
 
 
-
     /**
      * Edit method
      *

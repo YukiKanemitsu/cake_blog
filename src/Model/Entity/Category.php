@@ -15,9 +15,9 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *
- * @property \App\Model\Entity\ParentCategory $parent_category
+ * @property \App\Model\Entity\Category $parent_category
  * @property \App\Model\Entity\Article[] $articles
- * @property \App\Model\Entity\ChildCategory[] $child_categories
+ * @property \App\Model\Entity\Category[] $child_categories
  */
 class Category extends Entity
 {

@@ -2,20 +2,10 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Network\Exception\NotFoundException;
 
-/**
- * Articles Controller
- *
- * @property \App\Model\Table\ArticlesTable $Articles
- */
 class ArticlesController extends AppController
 {
-
-    /**
-     * Index method
-     *
-     * @return \Cake\Network\Response|null
-     */
     public function index()
     {
         $this->paginate = [
@@ -53,18 +43,21 @@ class ArticlesController extends AppController
     {
         $article = $this->Articles->newEntity();
         if ($this->request->is('post')) {
-            $article = $this->Articles->patchEntity($article, $this->request->data);
+            $article = $this->Articles->patchEntity($article, $this->request->getData());
             if ($this->Articles->save($article)) {
-                $this->Flash->success(__('The article has been saved.'));
-
+                $this->Flash->success(__('Your article has been saved.'));
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The article could not be saved. Please, try again.'));
+            $this->Flash->error(__('Unable to add your article.'));
         }
-        $categories = $this->Articles->Categories->find('list', ['limit' => 200]);
-        $this->set(compact('article', 'categories'));
-        $this->set('_serialize', ['article']);
+        $this->set('article', $article);
+
+        // 記事のカテゴリーを１つ選択するためにカテゴリーの一覧を追加
+        $categories = $this->Articles->Categories->find('treeList');
+        $this->set(compact('categories'));
     }
+
+
 
     /**
      * Edit method

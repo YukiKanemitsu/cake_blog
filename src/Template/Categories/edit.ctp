@@ -27,10 +27,6 @@
             echo $this->Form->input('parent_id', ['options' => $parentCategories, 'empty' => true]);
             echo $this->Form->input('name');
             echo $this->Form->input('description');
-            echo $this->Form->control('parent_id', [
-            'options' => $parentCategories,
-            'empty' => 'No parent category'
-            ]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

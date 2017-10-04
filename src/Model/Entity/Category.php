@@ -4,18 +4,22 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Article Entity
+ * Category Entity
  *
  * @property int $id
- * @property string $title
- * @property string $body
- * @property int $category_id
+ * @property int $parent_id
+ * @property int $lft
+ * @property int $rght
+ * @property string $name
+ * @property string $description
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *
- * @property \App\Model\Entity\Category $category
+ * @property \App\Model\Entity\ParentCategory $parent_category
+ * @property \App\Model\Entity\Article[] $articles
+ * @property \App\Model\Entity\ChildCategory[] $child_categories
  */
-class Article extends Entity
+class Category extends Entity
 {
 
     /**
